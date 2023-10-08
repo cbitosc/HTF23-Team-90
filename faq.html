@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logofinal.png" alt="Platform Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="a.html">Home</a></li>
+                <li><a href="receiver.html">Find Food</a></li>
+                <li><a href="donor.html">Donate Food</a></li>
+                <li><a href="GEO3.html" target="_blank">Geo Location</a></li>
+                <li><a href="login.html">Login/Register</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                
+            </ul>
+        </nav>
+
+        <div class="user-actions">
+            
+        </div>
+    </header>
+
+    
+    <section class="faq">
+        <div class="content">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div class="question">
+            <h3>1. How can I donate food to food shelters?</h3>
+            <div class="answer">
+                <p>To donate food to food shelters, follow these steps:</p>
+                <ol>
+                    <li>Visit our website and log in or create an account.</li>
+                    <li>Click on the "Donate Food" button.</li>
+                    <li>Enter details about the food items you want to donate, including type, quantity, and expiry
+                        date.</li>
+                    <li>Provide your location for food pickup or delivery.</li>
+                    <li>Confirm the donation.</li>
+                </ol>
+                <p>Our team will arrange to collect the food from your location and distribute it to the nearest food
+                    shelter.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>2. How can I request food assistance?</h3>
+            <div class="answer">
+                <p>Requesting food assistance is simple:</p>
+                <ol>
+                    <li>Log in to your account on our website.</li>
+                    <li>Browse the available food items in the inventory.</li>
+                    <li>Select the food items you need and add them to your cart.</li>
+                    <li>Confirm your order and provide your location for delivery.</li>
+                    <li>Our team will deliver the food to the nearest food shelter, and you can collect it from there.
+                    </li>
+                </ol>
+                <p>This service is available to individuals and families in need.</p>
+            </div>
+        </div>
+        <div class="question">
+            <h3>3. How do I find the nearest food shelter?</h3>
+            <div class="answer">
+                <p>Locating the nearest food shelter is easy:
+                <ul>
+                    <li>When you place a food order, our system will automatically identify the nearest food shelter to
+                        your location.</li>
+                    <li>Directions to the shelter will be provided, making it convenient for you to collect your food
+                        assistance.</li>
+                </ul>
+                You can also check the "Find Food Shelters" section on our website for a list of nearby shelters.</p>
+            </div>
+        </div>
+
+        <div class="question">
+            <h3>4. Is there a cost for receiving food assistance?</h3>
+            <div class="answer">
+                <p>No, there is no cost for receiving food assistance through our platform. Our mission is to reduce
+                    food waste and help those in need, so all food assistance is provided free of charge.</p>
+            </div>
+        </div>
+
+        <!-- Add more questions and answers as needed -->
+
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const questions = document.querySelectorAll('.question h3');
+
+            questions.forEach(function (question) {
+                question.addEventListener('click', function () {
+                    const answer = this.nextElementSibling;
+
+                    if (answer.style.display === 'block') {
+                        answer.style.display = 'none';
+                        this.classList.remove('active');
+                    } else {
+                        answer.style.display = 'block';
+                        this.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

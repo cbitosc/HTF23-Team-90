@@ -1,0 +1,49 @@
+/* Reset some default styles */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* FAQ section styles */
+.faq {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.content {
+  text-align: center;
+}
+
+/* Question styles */
+.question {
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question h3 {
+  cursor: pointer;
+}
+
+/* Answer styles */
+.answer {
+  display: none;
+  margin-top: 10px;
+}
+
+.answer p {
+  margin-bottom: 10px;
+}
+
+.answer ol {
+  list-style-type: decimal;
+  margin-left: 20px;
+}
+
+/* Active question styles */
+.active {
+  font-weight: bold;
+}
