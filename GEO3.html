@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Locations Map</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- Define the size of the map container -->
+    <style>
+        #map {
+            width: 100% !important;
+            height: 100vh !important;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Add a container for your map -->
+    <div id="map"></div>
+    <script src="./locations.js"></script>
+
+    <!-- Include Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+        var mylat = 0; // Initialize with a default value
+        var mylang = 0; // Initialize with a default value
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                mylat = position.coords.latitude;
+                mylang = position.coords.longitude;
+                
+                // Initialize the map with user's location as the center
+                var map = L.map('map').setView([mylat, mylang], 16);
+
+                // Add a tile layer (base map)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Add a marker for the user's location
+                var userMarker = L.marker([mylat, mylang]).addTo(map);
+                userMarker.bindPopup("My Location").openPopup();
+
+                // You can add other markers or layers as needed
+                // Example: Add markers for other locations
+                locations.forEach(function(location) {
+                var marker = L.marker([location.latitude, location.longitude]).addTo(map);
+                marker.bindPopup(location.name);
+            });
+            }, function(error) {
+                switch(error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("User denied the request for Geolocation.");
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert("Location information is unavailable.");
+                        break;
+                    case error.TIMEOUT:
+                        alert("The request to get user location timed out.");
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        alert("An unknown error occurred.");
+                        break;
+                }
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    </script>
+</body>
+</html>

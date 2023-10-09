@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Food</title>
+    <style>
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set a consistent font and background color for the entire page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo styles */
+        .logo img {
+            max-width: 100px;
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex; /* Make the navigation list a flex container */
+            align-items: center; /* Center-align items vertically within the list */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin-right: 20px; /* Add margin to create space between navigation links */
+        }
+
+        .user-actions {
+            margin-right: 20px;
+        }
+        body {
+            background: linear-gradient(45deg, #120509, #49261f, #eae1a5);
+        }
+        .whole {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background-color: antiquewhite;
+            display: flex;
+            width: 130vh;
+            height: 200px;
+            margin: 20px 20px 20px 20px;
+            border-radius: 15px;
+        }
+        .box {
+            margin: auto auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .image {
+            object-fit: cover;
+            
+            border-radius: 15px;
+            width: 30vh;
+        }
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-label {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logofinal.png" alt="Platform Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="a.html">Home</a></li>
+                <li><a href="receiver.html">Find Food</a></li>
+                
+                <li><a href="GEO3.html" target="_blank">Geo Location</a></li>
+
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="login.html">Login/Register</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            
+        </div>
+    </header>
+    <script>
+        var donorData = [
+            { item: "Rice", quantity: 0 },
+            { item: "Dal", quantity: 0 },
+            { item: "Curd", quantity: 0 },
+            { item: "Biryani", quantity: 0 },
+            { item: "Fruits", quantity: 0 },
+            { item: "Juice", quantity: 0 },
+            { item: "Roti", quantity: 0 }
+        ];
+
+        function updateQuantity(itemName, value) {
+            var sliderValueElement = document.getElementById("sliderValue" + itemName);
+            sliderValueElement.textContent = value;
+        }
+
+        function donateItem(itemName) {
+            var sliderValueElement = document.getElementById("sliderValue" + itemName);
+            var value = parseInt(sliderValueElement.textContent);
+            for (var i = 0; i < donorData.length; i++) {
+                if (donorData[i].item === itemName) {
+                    donorData[i].quantity = value;
+                    break;
+                }
+            }
+            alert(itemName + " donated: " + value);
+        }
+
+        console.log(donorData);
+    </script>
+    <div class="whole">
+        <div class="container">
+            <img class="image" src="img/riceimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Rice</p>
+                    <p id="opRice">Donate: <span id="sliderValueRice">0</span></p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="20" value="0" step="1" onchange="updateQuantity('Rice', this.value)">
+                    <button onclick="donateItem('Rice')">Donate Here</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/dalimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Dal</p>
+                    <p id="opDal">Donate: <span id="sliderValueDal">0</span></p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="20" value="0" step="1" onchange="updateQuantity('Dal', this.value)">
+                    <button onclick="donateItem('Dal')">Donate Here</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/biryaniimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Biryani</p>
+                    <p id="opBiryani">Donate: <span id="sliderValueBiryani">0</span></p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="20" value="0" step="1" onchange="updateQuantity('Biryani', this.value)">
+                    <button onclick="donateItem('Biryani')">Donate Here</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/rotiimg.jpeg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Roti</p>
+                    <p id="opRoti">Donate: <span id="sliderValueRoti">0</span></p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="20" value="0" step="1" onchange="updateQuantity('Roti', this.value)">
+                    <button onclick="donateItem('Roti')">Donate Here</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/curdimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Curd</p>
+                    <p id="opCurd">Donate: <span id="sliderValueCurd">0</span></p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="20" value="0" step="1" onchange="updateQuantity('Curd', this.value)">
+                    <button onclick="donateItem('Curd')">Donate Here</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/fruitsimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Fruits</p>
+                    <p id="opFruits">Donate: <span id="sliderValueFruits">0</span></p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="20" value="0" step="1" onchange="updateQuantity('Fruits', this.value)">
+                    <button onclick="donateItem('Fruits')">Donate Here</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/juiceimg.webp" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Juice</p>
+                    <p id="opJuice">Donate: <span id="sliderValueRice">0</span></p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="20" value="0" step="1" onchange="updateQuantity('Juice', this.value)">
+                    <button onclick="donateItem('Juice')">Donate Here</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

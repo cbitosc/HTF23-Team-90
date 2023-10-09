@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receive Food</title>
+    <style>
+        /* Common navigation styles */
+        /* Logo styles */
+        body,
+        h1,
+        h2,
+        h3,
+        p,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Set a consistent font and background color for the entire page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo styles */
+        .logo img {
+            max-width: 100px;
+            margin-left: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex; /* Make the navigation list a flex container */
+            align-items: center; /* Center-align items vertically within the list */
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin-right: 25px; /* Add margin to create space between navigation links */
+        }
+
+        .user-actions {
+            margin-right: 20px;
+        }
+        body {
+            background: linear-gradient(45deg, #120509, #49261f, #eae1a5);
+        }
+        .whole {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background-color: antiquewhite;
+            display: flex;
+            width: 130vh;
+            height: 200px;
+            margin: 20px 20px 20px 20px;
+            border-radius: 15px;
+        }
+        .box {
+            margin: auto auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .image {
+            object-fit: cover;
+            border-radius: 15px;
+            width: 30vh;
+        }
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .butn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto auto auto auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logofinal.png" alt="Platform Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="a.html">Home</a></li>
+                
+                <li><a href="donor.html">Donate Food</a></li>
+                <li><a href="GEO3.html" target="_blank">Geo Location</a></li>
+
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="login.html">Login/Register</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            
+        </div>
+    </header>
+    <script>
+        var donorData = [
+            { item: "Rice", quantity: 100 },
+            { item: "Dal", quantity: 120 },
+            { item: "Curd", quantity: 10 },
+            { item: "Biryani", quantity: 20 },
+            { item: "Fruits", quantity: 40 },
+            { item: "Juice", quantity: 50 },
+            { item: "Roti", quantity: 200 }
+        ];
+
+        var foodItems = {};
+
+        donorData.forEach(function (donor) {
+            var itemName = donor.item;
+            var quantity = donor.quantity;
+
+            foodItems[itemName] = quantity;
+        });
+
+        function updateQuantity(itemName, sliderValue) {
+            var quantityElement = document.getElementById("op" + itemName);
+            var currentQuantity = foodItems[itemName];
+            
+            if (sliderValue <= currentQuantity) {
+                foodItems[itemName] -= sliderValue;
+                quantityElement.textContent = "Quantity: " + foodItems[itemName] + " " + getUnit(itemName);
+            } else {
+                alert("Not enough quantity available for " + itemName);
+            }
+        }
+
+        function getUnit(itemName) {
+            var units = {
+                Rice: "Kg",
+                Roti: "",
+                Dal: "Lts",
+                Biryani: "Serves",
+                Fruits: "Kg",
+                Juice: "Serves",
+                Curd: "Lts"
+            };
+            return units[itemName];
+        }
+    </script>
+    <div class="whole">
+        <div class="container">
+            <img class="image" src="img/riceimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Rice</p>
+                    <p id="opRice">Quantity: 100 Kg</p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" value="0" id="sliderRice">
+                    <label for="sliderRice">Collect: <span id="sliderValueRice">0</span></label>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/rotiimg.jpeg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Roti</p>
+                    <p id="opRoti">Quantity: 200</p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" value="0" id="sliderRoti">
+                    <label for="sliderRoti">Collect: <span id="sliderValueRoti">0</span></label>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/dalimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Dal</p>
+                    <p id="opDal">Quantity: 120 Lts</p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" value="0" id="sliderDal">
+                    <label for="sliderDal">Collect: <span id="sliderValueDal">0</span></label>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/biryaniimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Biryani</p>
+                    <p id="opBiryani">Quantity: 20 Serves</p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" value="0" id="sliderBiryani">
+                    <label for="sliderBiryani">Collect: <span id="sliderValueBiryani">0</span></label>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/curdimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Curd</p>
+                    <p id="opCurd">Quantity: 10 Lts</p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" value="0" id="sliderCurd">
+                    <label for="sliderCurd">Collect: <span id="sliderValueCurd">0</span></label>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/fruitsimg.jpg" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Fruits</p>
+                    <p id="opFruits">Quantity: 40 Kg</p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" value="0" id="sliderFruits">
+                    <label for="sliderFruits">Collect: <span id="sliderValueFruits">0</span></label>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <img class="image" src="img/juiceimg.webp" alt="Product Image 1">
+            <div class="box">
+                <div>
+                    <p>Name: Juice</p>
+                    <p id="opJuice">Quantity: 50 Serves</p>
+                </div>
+                <div class="slider-container">
+                    <input type="range" min="0" max="5" value="0" id="sliderJuice">
+                    <label for="sliderJuice">Collect: <span id="sliderValueJuice">0</span></label>
+                </div>
+            </div>
+        </div>
+    
+
+    <script>
+        var sliderRice = document.getElementById("sliderRice");
+        var sliderValueRice = document.getElementById("sliderValueRice");
+
+        var sliderRoti = document.getElementById("sliderRoti");
+        var sliderValueRoti = document.getElementById("sliderValueRoti");
+
+        var sliderDal = document.getElementById("sliderDal");
+        var sliderValueDal = document.getElementById("sliderValueDal");
+
+        var sliderBiryani = document.getElementById("sliderBiryani");
+        var sliderValueBiryani = document.getElementById("sliderValueBiryani");
+
+        var sliderCurd = document.getElementById("sliderCurd");
+        var sliderValueCurd = document.getElementById("sliderValueCurd");
+
+        var sliderFruits = document.getElementById("sliderFruits");
+        var sliderValueFruits = document.getElementById("sliderValueFruits");
+
+        var sliderJuice = document.getElementById("sliderJuice");
+        var sliderValueJuice = document.getElementById("sliderValueJuice");
+
+        sliderRice.addEventListener("input", function () {
+            sliderValueRice.textContent = sliderRice.value;
+        });
+
+        sliderRoti.addEventListener("input", function () {
+            sliderValueRoti.textContent = sliderRoti.value;
+        });
+
+        sliderDal.addEventListener("input", function () {
+            sliderValueDal.textContent = sliderDal.value;
+        });
+
+        sliderBiryani.addEventListener("input", function () {
+            sliderValueBiryani.textContent = sliderBiryani.value;
+        });
+
+        sliderCurd.addEventListener("input", function () {
+            sliderValueCurd.textContent = sliderCurd.value;
+        });
+
+        sliderFruits.addEventListener("input", function () {
+            sliderValueFruits.textContent = sliderFruits.value;
+        });
+
+        sliderJuice.addEventListener("input", function () {
+            sliderValueJuice.textContent = sliderJuice.value;
+        });
+
+        function receiveFood() {
+            var riceQuantity = parseInt(sliderRice.value);
+            updateQuantity("Rice", riceQuantity);
+
+            var rotiQuantity = parseInt(sliderRoti.value);
+            updateQuantity("Roti", rotiQuantity);
+
+            var dalQuantity = parseInt(sliderDal.value);
+            updateQuantity("Dal", dalQuantity);
+
+            var biryaniQuantity = parseInt(sliderBiryani.value);
+            updateQuantity("Biryani", biryaniQuantity);
+
+            var curdQuantity = parseInt(sliderCurd.value);
+            updateQuantity("Curd", curdQuantity);
+
+            var fruitsQuantity = parseInt(sliderFruits.value);
+            updateQuantity("Fruits", fruitsQuantity);
+
+            var juiceQuantity = parseInt(sliderJuice.value);
+            updateQuantity("Juice", juiceQuantity);
+        }
+    </script>
+    <div class="container">
+        <div class="box">
+
+            <div class="butn">
+    
+                <button onclick="receiveFood()">Receive Food</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

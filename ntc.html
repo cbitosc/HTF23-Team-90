@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Locations Map</title>
+    <!-- Include Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- Define the size of the map container -->
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Add a container for your map -->
+    <div id="map"></div><!DOCTYPE html>
+    <html>
+    <head>
+        <title>Locations Map</title>
+        <!-- Include Leaflet CSS -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <!-- Define the size of the map container -->
+        <style>
+            #map {
+                width: 100% !important;
+                height: 100vh !important;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Add a container for your map -->
+        <div id="map"></div>
+    
+        <!-- Include Leaflet JavaScript -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        
+        <!-- Include your locations.js file -->
+        <script src="./locations.js"></script>
+        <script src="./mylocation.js"></script>
+        <script>console.log(mylocations.latitude)</script>
+        
+    
+        <script>
+            // Now you can access the 'locations' variable from locations.js
+            var map = L.map('map').setView([mylocations[0].latitude,  mylocations[0].longitude], 16); // Default center and zoom
+    
+            // Add a tile layer (base map)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+    
+            // Add markers for each location from the locations array
+            locations.forEach(function(location) {
+                var marker = L.marker([location.latitude, location.longitude]).addTo(map);
+                marker.bindPopup(location.name);
+            });
+            var marker = L.marker([mylocations[0].latitude,  mylocations[0].longitude]).addTo(map);
+            marker.bindPopup("my location.").openPopup();
+        </script>
+    </body>
+    </html>
+    
+
+   
